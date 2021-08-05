@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'compagnonmedium';
+    src: url('../fonts/compagnon-medium-webfont.woff2') format('woff2'),
+         url('../fonts/compagnon-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --main-gray: #2e3131;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* System Fonts as used by GitHub */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #E8E8E8;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    /* display: grid;
+    place-items: center;
+    position: relative; */
+    background-color: #2e3131;
+    /* background-image: url(./img/map_edited-01.jpg); */
+    background-image: url(./img/IntroMap.svg);
+    background-position: 0% 0%;
+    /* background-size: 75%; */
+    background-repeat: no-repeat;
+    color: #4c4f4f;
+    display: flex;
+    flex-direction: column;
+}
+.upper {
+    flex-grow: 1;
+    display: flex;
+}
+.first {
+    padding-top: 100px;
+    padding-left: 100px;
+}
+.first img {
+    width: 200px;
+}
+.second {
+    flex-grow: 1;
+}
+.third {
+    display: flex;
+    align-items: flex-end;
+    padding: 80px;
+    font-size: 4rem;
+    /* line-height: 4rem; */
+}
+.third .link {
+    display: flex;
+}
+.third a {
+    color: #e8e8e8;
+    font-family: 'compagnonmedium';
+}
+.third img {
+    width: 100px;
+}
+.third .arrow {
+    color: #34c5bd;
+}
+.lower {
+    padding: 20px;
+    text-align: right;
+    font-family: 'compagnonmedium';
+    padding-right: 80px;
+    padding-bottom: 80px;
+}
+.lower a {
+    color: #e8e8e8;
+    font-size: 1.6rem;
+}

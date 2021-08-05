@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit | Rattling Frames</title>
+    <link rel="stylesheet" href="about.css?001">
+    <!-- FONT: MANROPE -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        #submit-form input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 10px;
+            font-size: 1.2rem;
+            padding-left: 0;
+            width: 64ch;
+            display: block;
+            outline: none;
+        }
+        
+        #submit-button {
+            background: none;
+            border: none;
+        }
+        
+        #submit-button h1 {
+            border-bottom: 4px solid;
+            font-size: 2rem;
+        }
+        
+        .back {
+            font-family: 'compagnonmedium';
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .error {
+            color: gray;
+            font-size: 1rem;
+        }
+
+        ::placeholder,
+        :-ms-input-placeholder,
+        ::-webkit-input-placeholder {
+            color: gray;
+            font-weight: lighter;
+            font-size: 1rem;
+            color: red !important;
+        }
+        #yt {
+            color: gray;
+            font-size: 0.8rem;
+        }
+        @media (max-width: 576px){
+            #submit-form input {
+                max-width: 80vw;
+            }
+        }
+    </style>
+</head>
+
+<body class="about-page">
+    <aside>
+        <img style="cursor:pointer;" onclick="document.location='map.html?cat=all'" src="./img/logo.png" alt="">
+
+        <p>
+            <a href="about.html">About</a>
+        </p>
+        <p>
+            <a href="credits.html">Credits</a>
+        </p>
+
+    </aside>
+    <main>
+        <!-- <a id="close" href="app.html">&times;</a> -->
+        <h1>submit</h1>
+        <p class="lang">
+            <a href="#">
+                <strong class="el selected">Ελληνικά</strong>
+            </a>
+            <a href="submit-en.html">
+                <span class="en">English</span>
+            </a>
+        </p>
+        <section>
+            <p>Για να συμπεριληφθείτε στο αρχείο, παρακαλούμε ανεβάστε το υλικό σας σε mp4 ή mov με διάρκεια μέχρι 30 δεύτερα. Τα βίντεο θα πρέπει να αφορούν καταγραφή του δημόσιου χώρου όπως αυτός προέκυψε στην διάρκεια του περιορισμού
+                μετακινήσεων λόγω της πανδημίας Covid-19. Σε περίπτωση προβλήματος, επικοινωνείστε μαζί μας στο <a href="mailto:rattlingframes@gmail.com"><strong>rattlingframes@gmail.com</strong></a>.</p>
+        </section>
+        <h1>form</h1>
+        <div class="py-5">
+            <form action="submit.php" enctype="multipart/form-data" id="submit-form" method="post">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">όνομα ή αρχικά <span class="text-danger"> *</span></label>
+                        <input autocomplete="off" type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="area">περιοχή<span class="text-danger"> *</span></label>
+                        <input autocomplete="off" type="text" class="form-control" id="area" name="area">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="street">οδός<span class="text-danger"> *</span></label>
+                        <input autocomplete="off" type="text" class="form-control" id="street" name="street">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="emotions">συναίσθημα</label>
+                        <input autocomplete="off" class="form-control" id="emotions" name="emotions" type="text" aria-describedby="emotionsHelp" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="video_file">πηγή<br><span id="yt">YouTube κανάλι ή link για το υλικό σας</span></label>
+                        <input autocomplete="off" type="text" class="form-control-file" id="video_file" name="video_file" aria-describedby="fileHelp">
+                        <input type="file" name="uploaded_video">
+                        <!-- <small id="fileHelp" class="form-text text-muted">* YouTube κανάλι ή link για το υλικό σας</small> -->
+                    </div>
+                    <div class="form-group col-sm-6 mt-sm-4">
+                        <button id="submit-button" style="cursor:pointer;" type="submit" class="float-right btn btn-primary" name="submit-button" value="1"><h1>submit</h1>
+                        </button>
+                        <div id="server_upload" style="display: inline-block; padding: 10px; display: none;">Uploading data...</div>
+                        <div id="server_response" style="display: inline-block; padding: 10px; display: none;">Thank you. Your file has been submitted.</div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <footer>
+            <strong>rattling frames</strong>
+            <strong>Anna Lascari &copy; 2020-2021</strong>
+            <span>Creative Commons Attribution-NonCommercial-NoDerivatives</span>
+        </footer>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.js"></script>
+    <script src="js/jq-ajax-progress.min.js"></script>
+    <script src="js/script.js?ver=8"></script>
+
+</body>
+
+</html>

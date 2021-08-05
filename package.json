@@ -1,0 +1,17 @@
+{
+  "name": "rattling-frames",
+  "version": "1.0.0",
+  "description": "Video upload form",
+  "license": "LGPL-3.0-or-later",
+  "scripts" : {
+    "start": "live-server"
+  },
+  "author": {
+    "name": "Stamoulohta",
+    "email": "g.a.stamoulis@gmail.com",
+    "url": "http://stamoulohta.com"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

@@ -1,0 +1,177 @@
+@font-face {
+    font-family: 'compagnonmedium';
+    src: url('../fonts/compagnon-medium-webfont.woff2') format('woff2'),
+         url('../fonts/compagnon-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+:root {
+    --main-gray: #2e3131;
+}
+
+body {
+    background-color: #e8e8e8;
+    color: var(--main-gray);
+    display: flex;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1.2rem;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+}
+aside {
+    padding-left: 40px;
+    padding-top: 40px;
+    width: 250px;
+}
+aside a {
+    color: var(--main-gray);
+}
+aside img {
+    width: 150px;
+    margin-bottom: 120px;
+}
+.lang .selected {
+    text-decoration: underline;
+}
+h1 {
+    font-family: 'compagnonmedium';
+}
+h5 {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+.lang > * {
+    margin-right: 30px;
+    font-size: 1.1rem;
+}
+p {
+    font-weight: 200;
+    line-height: 1.8rem;;
+}
+p.arrow:before {
+    /* content: "\02192"; */
+    /* margin-left: -1.2rem; */
+}
+main {
+    flex-grow: 1;
+    padding: 40px;
+    padding-left: 120px;
+    overflow: auto;
+}
+main a {
+    color: var(--main-gray);
+    text-decoration: none;
+}
+main p {
+    max-width: 60ch;
+}
+main #close {
+    text-align: right;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    color: var(--main-gray);
+    text-decoration: none;
+}
+footer {
+    margin-top: 150px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+footer strong {
+    display: inline-block;
+    margin-top: 10px;
+}
+footer span {
+    margin-top: 8px;
+    width: 100%;
+    text-align: right;
+}
+.credit {
+    margin-bottom: -15px;
+    font-weight: bold;
+}
+
+.about-page h5 {
+
+    margin-bottom: 10px;
+
+}
+#about_mobile_warning {
+    display: none;
+}
+   
+@media (max-width: 576px){
+
+    #about_mobile_warning {
+        display: block;
+        background: rebeccapurple;
+        padding: 6px;
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+    }
+
+    .credits-page, .about-page {
+        flex-direction: column;
+    }
+    aside {
+        width: 100vw;
+      padding: 0;
+      text-align: center;
+    }
+    aside img {
+        margin: 0 auto;
+        display: block;
+    }
+    aside p {
+        display: inline-block;
+        margin: 60px 20px 0 20px;
+    }
+    h1 {
+        display: none;
+    }
+    main {
+        padding: 40px;
+    }
+    main #close {
+        display: none;
+    }
+}
+
+/* PLAY ICON */
+.fa-play-circle,
+.fa-pause-circle {
+    margin-top: 30px;
+    cursor: pointer;
+}
+audio {
+    visibility: hidden;
+    position: fixed;
+}
+
+.fa-play, .fa-pause {
+    border-radius: 50%;
+    border: 2px solid;
+    padding: 6px;
+    display: grid !important;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    box-sizing: border-box;
+    margin: 0;
+    cursor: pointer;
+    margin-top: 45px;
+}
+.fa-play:before {
+    margin-left: 4px;
+}

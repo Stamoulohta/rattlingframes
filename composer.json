@@ -1,0 +1,14 @@
+{
+    "name": "stamoulohta/rattlingframes",
+    "description": "Video upload form and manipulation",
+    "type": "project",
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^0.15.0"
+    },
+    "authors": [
+        {
+            "name": "George Stamoulis",
+            "email": "g.a.stamoulis@gmail.com"
+        }
+    ]
+}
