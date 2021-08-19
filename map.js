@@ -25,8 +25,8 @@ function RF(){
     const PLAYING_ALL_TEXT = "Playing..."
 
     // VIDEO ENTRIES THAT MUST BE REMOVED:
-    const removedEntriesFromVids = [ "143.skyrou" ];
-    const removedEntriesFromId   = [ 143 ];
+    const removedEntriesFromVids = [ "143.skyrou", "30.ilioupoli" ];
+    const removedEntriesFromId   = [ 143, 30 ];
     
     // HELPERS
     const $ = selector => document.querySelector(selector);
@@ -121,6 +121,8 @@ function RF(){
     const URL_BASE          = "https://rattlingframes.net";
     const mainContainer     = $(".container");
     const mainTemplate      = $(`${ isMobile ? "script#mobile" : "script#screen" }`); // Pick a template based on whether we are on a mobile or large-screen device 
+
+    // If we are one a mobile device, add a special class name to the body element:
     if ( isMobile ) { 
         document.body.classList.add("mobile"); 
     }
@@ -662,7 +664,7 @@ function RF(){
                        vidCat = videoList[currentVideo][1];
 
                 vInfoCreator.innerText = creator;
-                vInfoStreet.innerText  = street;
+                vInfoStreet.innerText  = street.replace("none,","");
                 if ( date.trim() !== "" ){
                     vInfoDate.innerText    = date[0] + date.slice(1).toLowerCase();
                 }
@@ -1402,6 +1404,8 @@ function RF(){
             border-width: 0 0 10px ${emoIdxPointWidth}px;
         }    
     `
+
+    // Map Pan & Zoom Setup
     panZoomTiger = svgPanZoom(svg, { 
         dblClickZoomEnabled: false, 
         mouseWheelZoomEnabled 
