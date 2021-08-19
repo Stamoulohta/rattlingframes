@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Video upload form",
   "license": "LGPL-3.0-or-later",
-  "scripts" : {
+  "scripts": {
     "start": "live-server"
   },
   "author": {
