@@ -4,6 +4,9 @@ function RF(){
     let isMobile = window.innerWidth <= 576;
     let debugMode = true;
 
+    // EXHIBITION MODE:
+    let exhibitionMode = false;
+
     // CONFIGURATION
     const mouseWheelZoomEnabled = false;
     const initialPanOffset      = isMobile ? 0 : -100;
@@ -447,6 +450,9 @@ function RF(){
         }
         /* DEBUGGING VIDEOS: */
 
+        // EXHIBITION MODE:
+        window._rf_categories = categories;
+
         categories.forEach( category => category.map(renderDot) );
 
         // TEST PERIMETER ON CAT-8
@@ -688,6 +694,11 @@ function RF(){
             document.body.classList.add("video-modal-active");
             isVideoModalOpen = true;
 
+            // EXHIBITION MODE: Speed-up for testing purposes
+            // if ( exhibitionMode ){
+            //     video.playbackRate = 10;
+            // }
+
             // DISPLAY EMOTIONS
             const emoBtn = emoIdx.querySelector(`[data-cat="${currentCat-1}"]`);
             const emo = emoBtn.getAttribute("data-emotion");
@@ -721,9 +732,10 @@ function RF(){
                 videoHeight = video.videoHeight = window.innerHeight * 0.62;
             }
             const ratio = height / videoHeight;
-            console.log({ ratio }); // 0.x OK, 1.x NOT OK
+            debugMode && console.log({ ratio }); // 0.x OK, 1.x NOT OK
             
-            console.log( "videoWidth * ratio", videoWidth * ratio );
+            debugMode && console.log( "videoWidth * ratio", videoWidth * ratio );
+
             if ( landscape && videoWidth * ratio > containerWidth ){
                 video.classList.add("landscape");
                 videoCtrls.style.width = containerWidth + "px";
@@ -832,7 +844,7 @@ function RF(){
             closeVideoText()
 
             const { width, height } = videoContainer.getBoundingClientRect();
-            videoContainer.style.width = width + "px";
+            videoContainer.style.width  = width + "px";
             videoContainer.style.height = height + "px";
 
             if ( selectedVideoOnFirstClick < selectedVideoIndices.length - 1 ){
@@ -858,6 +870,31 @@ function RF(){
 
                 video.src = `${URL_BASE}/data/${currentVideo}.mp4`;
                 // video.src = `LOADING.mp4`; // DEBUGGING LOADING INDICATOR
+            } else {
+                // EXHIBITION MODE:
+                // The videos from the selected categories are over. On to the next category...
+                try {
+
+                    if ( exhibitionMode ){
+    
+                        if ( !window._rf_categories[currentCat+1] ){
+                            currentVideo = 1;
+                            currentCat = 1;
+                            selectedVideoOnFirstClick = 0;
+                        } else {
+                            currentVideo = window._rf_categories[currentCat+1][0][0].split(".")[0];
+                            currentCat = currentCat + 1;
+                            selectedVideoOnFirstClick = 0;
+                        }
+                        getSelectedVideoIndices( currentCat, currentVideo );
+                        return onVideoNext();   
+                    }
+
+                } catch(e){
+
+                    console.error( e );
+
+                }
             }
 
             // [ DEPRECATED ]
@@ -1365,6 +1402,40 @@ function RF(){
             });
 
         }
+
+        // EXHIBITION: based on: handleMainMapClick()
+        function startSlideshow(){
+
+            exhibitionMode = true;
+            debugMode && console.log("handleMainMapClick()");
+            debugMode && console.log({ isPlayAllClicked });
+
+            // e.target.nodeName !== "circle"
+
+            currentCat   = 1; // e.target.getAttribute("data-category");
+            currentVideo = 1; // e.target.getAttribute("data-video").split(".")[0]; 
+            getSelectedVideoIndices( currentCat, currentVideo );
+
+            selectedVideoOnFirstClick = 0;
+            videoPrev.style.opacity = 0.15;
+            videoNext.style.opacity = 1;
+            
+            video.controls = true;
+            const URL = `${URL_BASE}/data/${currentVideo}.mp4`;
+            video.setAttribute("src", URL);
+
+        }
+
+        // EXHIBITION: Start Slideshow (code only for exhibition.html)
+        const bodyClass = document.body.getAttribute("class");
+        if ( bodyClass === "exhibition"){
+            try {
+                startSlideshow();
+            } catch(e){
+                console.error(e);
+            }
+        }
+
 
     }
 
